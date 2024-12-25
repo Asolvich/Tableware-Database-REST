@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Ошибка</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Произошла ошибка</h1>
+    <!-- Выводим сообщение об ошибке, если оно есть -->
+    <p th:if="${errorMessage}" th:text="НИЧЕГО НЕТ"></p>
+
+    <br>
+    <button onclick="window.location.href='/'">Вернуться на главную страницу</button>
+</div>
+</body>
+</html>

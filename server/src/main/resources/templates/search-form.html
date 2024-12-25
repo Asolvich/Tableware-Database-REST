@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск посуды по типу</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<h1>Поиск посуды по типу</h1>
+<div class="container">
+    <!-- Форма для ввода типа -->
+    <form action="/tableware/search" method="post">
+        <label for="type">Введите тип посуды:</label>
+        <input type="text" id="type" name="type" placeholder="Например, тарелка" required />
+        <button type="submit">Найти</button>
+    </form>
+
+    <!-- Список найденной посуды -->
+    <div th:if="${tablewareList != null}">
+        <h2>Результаты поиска:</h2>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Название</th>
+                <th>Материал</th>
+                <th>Тип</th>
+                <th>Объем (мл)</th>
+                <th>Цена (руб.)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${tablewareList}">
+                <td th:text="${item.id}"></td>
+                <td th:text="${item.name}"></td>
+                <td th:text="${item.material}"></td>
+                <td th:text="${item.type}"></td>
+                <td th:text="${item.volumeMl}"></td>
+                <td th:text="${item.priceRub}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:if="${tablewareList == null || #lists.isEmpty(tablewareList)}">
+        <p>Записей не найдено.</p>
+    </div>
+
+    <a href="/">Вернуться на главную страницу</a>
+
+</div>
+</body>
+</html>

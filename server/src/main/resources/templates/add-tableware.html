@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить посуду</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Добавить новую запись о посуде</h1>
+
+    <div th:if="${errorMessage != null}">
+        <p style="color: red;" th:text="${errorMessage}"></p>
+    </div>
+
+    <form action="/tableware/add" method="post" th:object="${tableware}">
+        <!-- Название -->
+        <label for="name">Название:</label>
+        <input type="text" id="name" name="name" th:value="*{name}" required />
+        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+        <br>
+
+        <!-- Материал -->
+        <label for="material">Материал:</label>
+        <input type="text" id="material" name="material" th:value="*{material}" required />
+        <p th:if="${#fields.hasErrors('material')}" th:errors="*{material}"></p>
+        <br>
+
+        <!-- Тип -->
+        <label for="type">Тип:</label>
+        <input type="text" id="type" name="type" th:value="*{type}" required />
+        <p th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></p>
+        <br>
+
+        <!-- Объём -->
+        <label for="volumeMl">Объём (мл):</label>
+        <input type="number" id="volumeMl" name="volumeMl" th:value="*{volumeMl}" min="1" required />
+        <p th:if="${#fields.hasErrors('volumeMl')}" th:errors="*{volumeMl}"></p>
+        <br>
+
+        <!-- Цена -->
+        <label for="priceRub">Цена (руб):</label>
+        <input type="number" id="priceRub" name="priceRub" th:value="*{priceRub}" min="1" required />
+        <p th:if="${#fields.hasErrors('priceRub')}" th:errors="*{priceRub}"></p>
+
+        <button type="submit">Добавить</button>
+    </form>
+    <a href="/tableware/view">Вернуться к списку</a>
+</div>
+</body>
+</html>

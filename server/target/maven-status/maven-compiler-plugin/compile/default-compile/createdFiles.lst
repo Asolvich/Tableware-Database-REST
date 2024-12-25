@@ -1,0 +1,8 @@
+org\example\TablewareDAO.class
+org\example\WebApplication.class
+org\example\TablewareController.class
+org\example\TablewareRepository.class
+org\example\RestTablewareController.class
+org\example\Tableware.class
+org\example\TablewareService.class
+org\example\DataBaseConfig.class
